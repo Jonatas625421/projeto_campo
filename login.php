@@ -13,7 +13,7 @@
 <input type="text" name="email" placeholder="Informe seu login"><br><br>
 <input type="password" name="password" placeholder="Digite a sua senha"><br><br>
 <input type="button" onclick="validate_login()" value="ENTRAR"><br><br>
-<small>Não é registrado?</small><a href="">&nbspCrie uma conta</a>
+<small>Não é registrado?</small><a href="">Crie uma conta</a>
 </form>
 </body>
 </html>
