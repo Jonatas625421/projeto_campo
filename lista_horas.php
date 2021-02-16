@@ -1,5 +1,15 @@
 <?php
-$conexao = mysqli_connect("localhost", "root", "", "projeto_campo");
+session_start();
+
+  if (isset($_SESSION['autenticado']) === false) {
+ 	header('location:login.php');
+ }
+  
+
+ $autenticado =  $_SESSION['autenticado'];
+
+
+ $conexao = mysqli_connect("localhost", "root", "", "projeto_campo");
 
 if (!$conexao) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;
@@ -20,6 +30,9 @@ $data = mysqli_query($conexao,$sql) or die("Erro");
 	<title>Lista de Horas</title>
 </head>
 <body>
+
+    <input type="button" value="sair" onclick="window.location.href = 'logout.php';"/>
+
 	<table>
 		<tr>
 			<th>usuario</th>

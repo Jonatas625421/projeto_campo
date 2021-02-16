@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (isset($_SESSION['autenticado'])){
+  header('location: lista_horas.php');
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $conexao = mysqli_connect("localhost", "root", "", "projeto_campo");
 
@@ -16,8 +17,14 @@ $sql = sprintf("select * from users where email='%s' and password='%s'", $_POST[
 $data = mysqli_query($conexao,$sql) or die("Erro");
 $row = mysqli_fetch_array($data);
 
+
+
 if(is_null($row)){
 	header('location:login.php?login=false');
+}else{
+
+	$_SESSION['autenticado'] = true;
+
+	header('location:lista_horas.php');
 }
 
-die('logou');
