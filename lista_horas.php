@@ -1,4 +1,3 @@
-
 <?php
 $conexao = mysqli_connect("localhost", "root", "", "projeto_campo");
 
@@ -15,29 +14,23 @@ $sql = "select * from time_registration order by id desc";
 $data = mysqli_query($conexao,$sql) or die("Erro");
 
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Lista de Horas</title>
 </head>
 <body>
-
 	<table>
 		<tr>
-			<td>usuario</td>
-			<td>Tempo</td>
+			<th>usuario</th>
+			<th>Tempo</th>
 		</tr>
 		<?php
-
-           while ($row = mysqli_fetch_assoc($data)) {
-            
-	       echo "<td>".$row['user_id']."</td>";
-	       echo "<td>".$row['field_time']."</td>";
-         } 
-
+			while ($row = mysqli_fetch_assoc($data)) {            
+			echo "<td>".$row['user_id']."</td>";
+			echo "<td>".$row['field_time']."</td>";
+			} 
 		?>
 	</table>
-
 </body>
 </html>
