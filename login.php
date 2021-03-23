@@ -6,6 +6,12 @@ if (isset($_SESSION['autenticado'])){
 
 }
 
+$login = '';
+$error_message = '';
+if (isset($_GET['login'])){
+	$login = 'data-login="'. $_GET['login'].'"';
+	$error_message = '<span style="color:red;">Usuário e/ou senha incorreto(s)</span>';
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,12 +19,14 @@ if (isset($_SESSION['autenticado'])){
 <head>
 	<meta charset="utf-8">
 	<title>Tela de login</title>
-	<script src="js/login.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<script src="js/login.js"></script>
+	
 </head>
 	<body>
-		<form id="form" method="post" action="login_validate.php">
+		<form id="form-login" method="post" action="login_validate.php" <?php echo $login;?>>
 			<div id="login">
+				<?php echo $error_message;?>
 			    <span>Login</span>
 				
 				
@@ -38,3 +46,16 @@ if (isset($_SESSION['autenticado'])){
 	    </form>
 	</body>
 </html>
+<script type="text/javascript">
+	function show_login_message(){
+		var form = document.getElementById('form-login');
+
+		if (form.dataset.login === 'false') {
+
+          alert('Usuário e/ou senha incorreto(s)');
+		}
+
+	}
+	show_login_message();
+</script>
+	
